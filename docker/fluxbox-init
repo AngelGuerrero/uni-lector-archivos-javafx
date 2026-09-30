@@ -1,0 +1,12 @@
+session.screen0.toolbar.visible: false
+session.screen0.slit.autoHide: true
+session.screen0.workspaces: 1
+session.screen0.defaultDeco: NORMAL
+session.screen0.focusModel: ClickToFocus
+session.screen0.fullMaximization: false
+session.screen0.rootCommand: /bin/true
+session.screen0.tab.placement: TopLeft
+session.screen0.window.focus.alpha: 255
+session.screen0.window.unfocus.alpha: 255
+session.menuFile: /dev/null
+session.keyFile: /dev/null

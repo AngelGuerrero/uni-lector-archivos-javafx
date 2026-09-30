@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.unadm.lector.controller.MainController"
+            styleClass="app-root">
+
+  <top>
+    <VBox>
+      <MenuBar>
+        <menus>
+
+          <Menu text="_Archivo">
+            <items>
+              <MenuItem text="Nuevo" accelerator="Ctrl+N" onAction="#nuevoDocumento"/>
+              <MenuItem text="Abrir archivo..." accelerator="Ctrl+O" onAction="#seleccionarArchivo"/>
+              <Menu fx:id="menuRecientes" text="Abrir recientes"/>
+              <SeparatorMenuItem/>
+              <MenuItem fx:id="miGuardar" text="Guardar" accelerator="Ctrl+S" onAction="#guardar"/>
+              <MenuItem fx:id="miGuardarComo" text="Guardar como..." accelerator="Ctrl+Shift+S" onAction="#guardarComo"/>
+              <MenuItem fx:id="miRecargar" text="Recargar desde disco" accelerator="F5" onAction="#recargar"/>
+              <SeparatorMenuItem/>
+              <MenuItem fx:id="miCerrarPestana" text="Cerrar pestana" accelerator="Ctrl+W" onAction="#cerrarPestana"/>
+              <MenuItem text="Salir" accelerator="Ctrl+Q" onAction="#cerrarApp"/>
+            </items>
+          </Menu>
+
+          <Menu text="_Editar">
+            <items>
+              <MenuItem fx:id="miDeshacer" text="Deshacer" accelerator="Ctrl+Z" onAction="#deshacer"/>
+              <MenuItem fx:id="miRehacer" text="Rehacer" accelerator="Ctrl+Y" onAction="#rehacer"/>
+              <SeparatorMenuItem/>
+              <MenuItem fx:id="miCortar" text="Cortar" onAction="#cortar"/>
+              <MenuItem fx:id="miCopiar" text="Copiar" onAction="#copiar"/>
+              <MenuItem fx:id="miPegar" text="Pegar" onAction="#pegar"/>
+              <MenuItem fx:id="miSeleccionarTodo" text="Seleccionar todo" accelerator="Ctrl+A" onAction="#seleccionarTodo"/>
+              <SeparatorMenuItem/>
+              <MenuItem fx:id="miBuscar" text="Buscar y reemplazar..." accelerator="Ctrl+F" onAction="#buscarYReemplazar"/>
+              <MenuItem fx:id="miIrALinea" text="Ir a linea..." accelerator="Ctrl+G" onAction="#irALinea"/>
+              <SeparatorMenuItem/>
+              <MenuItem text="Copiar ruta del archivo" onAction="#copiarRuta"/>
+            </items>
+          </Menu>
+
+          <Menu text="_Ver">
+            <items>
+              <CheckMenuItem fx:id="miAjusteLinea" text="Ajustar lineas largas"/>
+              <CheckMenuItem fx:id="miNumerosLinea" text="Mostrar numeros de linea"/>
+              <CheckMenuItem fx:id="miTemaOscuro" text="Tema oscuro"/>
+              <SeparatorMenuItem/>
+              <MenuItem text="Aumentar texto" accelerator="Ctrl+Equals" onAction="#aumentarFuente"/>
+              <MenuItem text="Reducir texto" accelerator="Ctrl+Minus" onAction="#disminuirFuente"/>
+              <MenuItem text="Tamano original" accelerator="Ctrl+0" onAction="#restablecerFuente"/>
+            </items>
+          </Menu>
+
+          <Menu text="_Herramientas">
+            <items>
+              <MenuItem fx:id="miEstadisticas" text="Estadisticas del documento..." accelerator="Ctrl+T" onAction="#mostrarEstadisticas"/>
+              <SeparatorMenuItem/>
+              <MenuItem text="Preferencias..." accelerator="Ctrl+Comma" onAction="#mostrarPreferencias"/>
+            </items>
+          </Menu>
+
+          <Menu text="A_yuda">
+            <items>
+              <MenuItem text="Acerca de este programa" accelerator="F1" onAction="#mostrarInformacion"/>
+            </items>
+          </Menu>
+
+        </menus>
+      </MenuBar>
+
+      <ToolBar styleClass="barra-herramientas">
+        <items>
+          <Button text="Nuevo" onAction="#nuevoDocumento">
+            <tooltip><Tooltip text="Crear un documento vacio (Ctrl+N)"/></tooltip>
+          </Button>
+          <Button text="Abrir..." onAction="#seleccionarArchivo" styleClass="boton-primario">
+            <tooltip><Tooltip text="Abrir uno o varios archivos de texto (Ctrl+O)"/></tooltip>
+          </Button>
+          <Button fx:id="btnGuardar" text="Guardar" onAction="#guardar">
+            <tooltip><Tooltip text="Guardar los cambios (Ctrl+S)"/></tooltip>
+          </Button>
+          <Separator orientation="VERTICAL"/>
+          <Button fx:id="btnBuscar" text="Buscar" onAction="#buscarYReemplazar">
+            <tooltip><Tooltip text="Buscar y reemplazar texto (Ctrl+F)"/></tooltip>
+          </Button>
+          <Button fx:id="btnEstadisticas" text="Estadisticas" onAction="#mostrarEstadisticas">
+            <tooltip><Tooltip text="Analizar el documento (Ctrl+T)"/></tooltip>
+          </Button>
+          <Separator orientation="VERTICAL"/>
+          <Button text="Preferencias" onAction="#mostrarPreferencias"/>
+        </items>
+      </ToolBar>
+    </VBox>
+  </top>
+
+  <center>
+    <TabPane fx:id="tabPane" styleClass="documentos"/>
+  </center>
+
+  <bottom>
+    <VBox>
+      <ProgressBar fx:id="barraProgreso" maxWidth="Infinity" prefHeight="3.0" progress="0.0"
+                   styleClass="progreso-tarea"/>
+      <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="barra-estado">
+        <padding><Insets bottom="6.0" left="12.0" right="12.0" top="6.0"/></padding>
+        <children>
+          <Label fx:id="lblEstado" text="Listo." styleClass="estado-mensaje"/>
+          <Region HBox.hgrow="ALWAYS"/>
+          <Label fx:id="lblConteo" styleClass="estado-dato"/>
+          <Separator orientation="VERTICAL"/>
+          <Label fx:id="lblPosicion" styleClass="estado-dato"/>
+          <Separator orientation="VERTICAL"/>
+          <Label fx:id="lblTamano" styleClass="estado-dato"/>
+          <Separator orientation="VERTICAL"/>
+          <ChoiceBox fx:id="cbCodificacion" prefWidth="130.0">
+            <tooltip><Tooltip text="Codificacion del documento. Cambiarla vuelve a leer el archivo."/></tooltip>
+          </ChoiceBox>
+        </children>
+      </HBox>
+    </VBox>
+  </bottom>
+
+</BorderPane>

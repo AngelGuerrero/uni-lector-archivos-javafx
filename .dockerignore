@@ -1,0 +1,37 @@
+# Control de versiones
+.git
+.gitignore
+
+# Salidas de compilacion (la imagen compila desde cero)
+target/
+out/
+build/
+
+# Datos del usuario: no deben acabar dentro de la imagen
+data/
+
+# Configuracion de editores e IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Documentacion y scripts que no hacen falta para construir
+README.md
+LICENSE
+docs/
+run.sh
+run.ps1
+docker-compose.yml
+docker-compose.*.yml
+
+# Basura del sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Empaquetado nativo de Windows: no interviene en la imagen
+build/
+dist/
+build-windows.ps1

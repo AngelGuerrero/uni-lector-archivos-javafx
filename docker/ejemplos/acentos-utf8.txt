@@ -1,0 +1,9 @@
+Prueba de acentos y simbolos
+============================
+
+Ñoño comió ñame en el año 2019 mientras cargaba una cigüeña.
+Árbol, éxito, ímpetu, óptica, único, ü de vergüenza.
+¿Cómo estás? ¡Qué sorpresa! Señor, señora, niño, niña.
+
+Este archivo está guardado en UTF-8. Si los caracteres de arriba se
+ven mal, prueba a cambiar la codificación en la barra de estado.

@@ -1,0 +1,21 @@
+# Normaliza los finales de linea al guardar en el repositorio.
+* text=auto eol=lf
+
+# Estos archivos los ejecuta Linux dentro del contenedor: si Git los entrega
+# con CRLF al clonar en Windows, el shebang deja de resolverse y el contenedor
+# muere con "no such file or directory".
+*.sh            text eol=lf
+docker/*        text eol=lf
+Dockerfile      text eol=lf
+*.yml           text eol=lf
+
+# Scripts propios de Windows.
+*.ps1           text eol=crlf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+# Binarios: Git no debe tocarlos.
+*.png           binary
+*.jpg           binary
+*.ico           binary
+*.jar           binary

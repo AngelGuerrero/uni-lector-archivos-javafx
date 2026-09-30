@@ -1,0 +1,7 @@
+! Overlay de fluxbox: se aplica encima del estilo activo.
+!
+! "background: none" evita que fluxbox llame a fbsetbg para poner el tapiz.
+! fbsetbg no encuentra ningun programa de fondos en una imagen minima y abre
+! un xmessage de error que queda flotando encima de la aplicacion.
+! El color del escritorio lo pone el entrypoint con xsetroot.
+background: none

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" spacing="0.0" prefWidth="560.0" prefHeight="640.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.unadm.lector.controller.AboutController"
+      styleClass="panel-dialogo">
+
+  <children>
+
+    <HBox alignment="CENTER_LEFT" spacing="18.0" styleClass="cabecera-dialogo">
+      <padding><Insets bottom="16.0" left="20.0" right="20.0" top="18.0"/></padding>
+      <children>
+        <VBox spacing="4.0">
+          <children>
+            <Label fx:id="lblTitulo" styleClass="titulo-dialogo"/>
+            <Label fx:id="lblVersion" styleClass="subtitulo-dialogo"/>
+          </children>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ImageView fitHeight="64.0" preserveRatio="true" pickOnBounds="true">
+          <image><Image url="@../img/logounadm.png"/></image>
+        </ImageView>
+      </children>
+    </HBox>
+
+    <Separator/>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="panel-resumen">
+      <content>
+        <VBox spacing="18.0">
+          <padding><Insets bottom="20.0" left="20.0" right="20.0" top="18.0"/></padding>
+          <children>
+
+            <Label styleClass="parrafo" wrapText="true"
+                   text="Programa hecho para demostrar el manejo de entrada y salida en Java. Permite abrir varios archivos de texto en pestanas, editarlos y guardarlos, buscar y reemplazar con expresiones regulares, y analizar el contenido: conteos, promedios y frecuencia de palabras."/>
+
+            <Label styleClass="parrafo" wrapText="true"
+                   text="Es la segunda version de la actividad original de 2019. Aquella leia el archivo en el hilo de la interfaz y dejaba el lector abierto; esta usa tareas en segundo plano, cierra siempre los recursos y corre dentro de un contenedor, sin necesidad de instalar Java."/>
+
+            <Separator/>
+
+            <Label text="Datos del autor" styleClass="titulo-seccion"/>
+            <GridPane hgap="16.0" vgap="8.0">
+              <columnConstraints>
+                <ColumnConstraints minWidth="110.0"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+              </columnConstraints>
+              <children>
+                <Label text="Autor" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Luis Angel De Santiago Guerrero" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Matricula" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="ES1611300455" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Materia" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label text="Programacion orientada a objetos III" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Docente" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label text="Angelica Cruz Caloch" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Universidad" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label text="Universidad Abierta y a Distancia de Mexico" wrapText="true"
+                       GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+              </children>
+            </GridPane>
+
+            <Separator/>
+
+            <Label text="Entorno de ejecucion" styleClass="titulo-seccion"/>
+            <GridPane hgap="16.0" vgap="8.0">
+              <columnConstraints>
+                <ColumnConstraints minWidth="110.0"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+              </columnConstraints>
+              <children>
+                <Label text="Java" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="lblJava" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="JavaFX" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="lblJavaFX" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Sistema" styleClass="etiqueta-campo" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="lblSistema" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+              </children>
+            </GridPane>
+
+          </children>
+        </VBox>
+      </content>
+    </ScrollPane>
+
+    <Separator/>
+
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+      <padding><Insets bottom="14.0" left="20.0" right="20.0" top="12.0"/></padding>
+      <children>
+        <Button text="Copiar datos del entorno" onAction="#copiarEntorno"/>
+        <Button text="Cerrar" onAction="#cerrar" defaultButton="true" cancelButton="true"
+                styleClass="boton-primario"/>
+      </children>
+    </HBox>
+
+  </children>
+</VBox>

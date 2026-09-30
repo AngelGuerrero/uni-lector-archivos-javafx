@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" spacing="0.0" prefWidth="880.0" prefHeight="660.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.unadm.lector.controller.StatsController"
+      styleClass="panel-dialogo">
+
+  <children>
+
+    <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="cabecera-dialogo">
+      <padding><Insets bottom="12.0" left="18.0" right="18.0" top="14.0"/></padding>
+      <children>
+        <VBox spacing="2.0">
+          <children>
+            <Label text="Estadisticas del documento" styleClass="titulo-dialogo"/>
+            <Label fx:id="lblArchivo" styleClass="subtitulo-dialogo"/>
+          </children>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ProgressIndicator fx:id="indicador" prefHeight="22.0" prefWidth="22.0" visible="false"/>
+      </children>
+    </HBox>
+
+    <Separator/>
+
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+
+        <Tab text="Resumen">
+          <content>
+            <ScrollPane fitToWidth="true" styleClass="panel-resumen">
+              <content>
+                <VBox spacing="18.0">
+                  <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
+                  <children>
+
+                    <Label text="Conteos" styleClass="titulo-seccion"/>
+                    <GridPane hgap="24.0" vgap="10.0" styleClass="rejilla-datos">
+                      <columnConstraints>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="130.0"/>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="130.0"/>
+                      </columnConstraints>
+                      <children>
+                        <Label text="Caracteres" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="lblCaracteres" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Caracteres sin espacios" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                        <Label fx:id="lblCaracteresSinEspacios" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                        <Label text="Palabras" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="lblPalabras" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Palabras distintas" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label fx:id="lblPalabrasUnicas" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                        <Label text="Lineas" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <Label fx:id="lblLineas" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Label text="Lineas con texto" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <Label fx:id="lblLineasConTexto" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+                        <Label text="Parrafos" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <Label fx:id="lblParrafos" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <Label text="Oraciones" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                        <Label fx:id="lblOraciones" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                        <Label text="Tamano del texto" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                        <Label fx:id="lblTamano" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                        <Label text="Linea mas larga" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                        <Label fx:id="lblLineaMasLarga" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                      </children>
+                    </GridPane>
+
+                    <Separator/>
+
+                    <Label text="Promedios" styleClass="titulo-seccion"/>
+                    <GridPane hgap="24.0" vgap="10.0" styleClass="rejilla-datos">
+                      <columnConstraints>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="130.0"/>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="130.0"/>
+                      </columnConstraints>
+                      <children>
+                        <Label text="Longitud media de palabra" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="lblPromedioPalabra" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Palabras por linea" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                        <Label fx:id="lblPromedioLinea" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                        <Label text="Palabras por oracion" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="lblPromedioOracion" styleClass="dato" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Diversidad lexica" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label fx:id="lblDiversidad" styleClass="dato" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                      </children>
+                    </GridPane>
+
+                    <Label styleClass="nota" wrapText="true"
+                           text="La diversidad lexica es la proporcion de palabras distintas sobre el total: cuanto mas alta, menos se repite el vocabulario."/>
+
+                  </children>
+                </VBox>
+              </content>
+            </ScrollPane>
+          </content>
+        </Tab>
+
+        <Tab text="Frecuencia de palabras">
+          <content>
+            <VBox spacing="12.0">
+              <padding><Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/></padding>
+              <children>
+
+                <HBox spacing="12.0" alignment="CENTER_LEFT">
+                  <children>
+                    <CheckBox fx:id="chkOmitirVacias" text="Omitir palabras vacias (el, la, de, que...)" selected="true"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="txtFiltro" promptText="Filtrar palabras..." prefWidth="220.0"/>
+                  </children>
+                </HBox>
+
+                <SplitPane dividerPositions="0.42" VBox.vgrow="ALWAYS">
+                  <items>
+
+                    <TableView fx:id="tabla">
+                      <columns>
+                        <TableColumn fx:id="colPosicion" text="#" prefWidth="48.0" sortable="false"/>
+                        <TableColumn fx:id="colPalabra" text="Palabra" prefWidth="160.0"/>
+                        <TableColumn fx:id="colFrecuencia" text="Apariciones" prefWidth="100.0"/>
+                        <TableColumn fx:id="colPorcentaje" text="Porcentaje" prefWidth="95.0"/>
+                      </columns>
+                    </TableView>
+
+                    <BarChart fx:id="grafica" animated="false" legendVisible="false"
+                              categoryGap="4.0" barGap="1.0">
+                      <xAxis><CategoryAxis label="Palabra"/></xAxis>
+                      <yAxis><NumberAxis label="Apariciones"/></yAxis>
+                    </BarChart>
+
+                  </items>
+                </SplitPane>
+
+              </children>
+            </VBox>
+          </content>
+        </Tab>
+
+      </tabs>
+    </TabPane>
+
+    <Separator/>
+
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+      <padding><Insets bottom="14.0" left="18.0" right="18.0" top="12.0"/></padding>
+      <children>
+        <Button text="Exportar a CSV..." onAction="#exportar"/>
+        <Button text="Cerrar" onAction="#cerrar" cancelButton="true" defaultButton="true"
+                styleClass="boton-primario"/>
+      </children>
+    </HBox>
+
+  </children>
+</VBox>

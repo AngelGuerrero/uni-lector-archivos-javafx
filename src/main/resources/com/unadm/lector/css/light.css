@@ -1,0 +1,32 @@
+/*
+ * Tema claro. Solo define la paleta; la estructura vive en base.css.
+ */
+
+.root {
+    -c-fondo:            #f4f5f7;
+    -c-superficie:       #e9ebef;
+    -c-superficie-alta:  #ffffff;
+    -c-fondo-editor:     #ffffff;
+    -c-fondo-canaleta:   #f0f1f4;
+
+    -c-texto:            #1c1f26;
+    -c-texto-suave:      #4a5160;
+    -c-texto-tenue:      #7c8494;
+
+    -c-borde:            #cfd4dd;
+    -c-borde-tenue:      #e4e7ed;
+
+    -c-boton:            #ffffff;
+    -c-boton-hover:      #eef0f4;
+    -c-boton-activo:     #dfe3ea;
+
+    -c-acento:           #2f6fd0;
+    -c-acento-hover:     #2a61b7;
+    -c-acento-texto:     #ffffff;
+
+    -c-seleccion:        #cfe0f8;
+    -c-fila-alterna:     #f7f8fa;
+
+    -c-exito:            #1f7a45;
+    -c-error:            #b3261e;
+}

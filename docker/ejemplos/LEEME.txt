@@ -1,0 +1,30 @@
+Lector de archivos 2.0
+======================
+
+Esta carpeta trae archivos de ejemplo para probar el programa sin
+tener que montar nada desde tu equipo.
+
+Que puedes probar aqui
+----------------------
+
+1. Abrir varios archivos a la vez (Ctrl+O y selecciona mas de uno).
+   Cada uno llega en su propia pestana.
+
+2. Buscar y reemplazar (Ctrl+F). Marca "Expresion regular" y busca
+   algo como  \d{4}  para encontrar los anios del texto.
+
+3. Estadisticas (Ctrl+T). La pestana "Frecuencia de palabras" ordena
+   el vocabulario y lo grafica; el boton exporta todo a CSV.
+
+4. Ir a una linea concreta con Ctrl+G.
+
+5. Cambiar entre tema claro y oscuro desde el menu Ver.
+
+6. Ajustar la tipografia y el tamano en Herramientas > Preferencias.
+
+Tus propios archivos
+--------------------
+
+Todo lo que pongas en la carpeta que montaste como /data aparece
+dentro del contenedor. Es el mismo lugar donde el programa abre
+el selector de archivos la primera vez.

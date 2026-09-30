@@ -1,0 +1,38 @@
+services:
+
+  lector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lector-archivos:2.0.0
+    container_name: lector-archivos
+
+    ports:
+      # Interfaz en el navegador
+      - "6080:6080"
+      # VNC directo, por si prefieres un cliente como RealVNC o TigerVNC
+      - "5900:5900"
+
+    volumes:
+      # Tus archivos. Pon aqui lo que quieras abrir desde el programa.
+      - ./data:/data
+      # Las preferencias sobreviven a "docker compose down".
+      - lector-config:/home/lector/.config/lector-archivos
+
+    environment:
+      # Resolucion de la pantalla virtual.
+      SCREEN_WIDTH: "1440"
+      SCREEN_HEIGHT: "900"
+      # Memoria de la JVM. Subelo si vas a abrir archivos muy grandes.
+      JAVA_OPTS: "-Xmx512m"
+
+    # JavaFX y el servidor X usan memoria compartida; el valor por omision
+    # de Docker (64 MB) se queda corto y provoca cuelgues al redibujar.
+    shm_size: "512mb"
+
+    stdin_open: true
+    tty: true
+    restart: "no"
+
+volumes:
+  lector-config:

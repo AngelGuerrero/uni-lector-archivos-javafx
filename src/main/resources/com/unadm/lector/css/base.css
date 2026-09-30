@@ -1,0 +1,449 @@
+/*
+ * Estructura visual comun a los dos temas.
+ * Los colores no se fijan aqui: se toman de los "looked-up colors" que
+ * definen light.css y dark.css, de modo que cambiar de tema no exige
+ * reescribir ninguna regla de este archivo.
+ */
+
+.root {
+    -fx-font-family: "DejaVu Sans", "Noto Sans", "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: -c-fondo;
+    -fx-text-fill: -c-texto;
+}
+
+/* ---------- Ventana principal ---------- */
+
+.app-root {
+    -fx-background-color: -c-fondo;
+}
+
+.menu-bar {
+    -fx-background-color: -c-superficie;
+    -fx-border-color: transparent transparent -c-borde transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.menu-bar .label {
+    -fx-text-fill: -c-texto;
+}
+
+.barra-herramientas {
+    -fx-background-color: -c-superficie;
+    -fx-border-color: transparent transparent -c-borde transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 7 12 7 12;
+    -fx-spacing: 6;
+}
+
+/* ---------- Botones ---------- */
+
+.button {
+    -fx-background-color: -c-boton;
+    -fx-text-fill: -c-texto;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: -c-borde;
+    -fx-border-width: 1;
+    -fx-padding: 5 13 5 13;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -c-boton-hover;
+}
+
+.button:pressed {
+    -fx-background-color: -c-boton-activo;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+.boton-primario {
+    -fx-background-color: -c-acento;
+    -fx-text-fill: -c-acento-texto;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.boton-primario:hover {
+    -fx-background-color: -c-acento-hover;
+}
+
+.boton-primario:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* ---------- Pestanas de documentos ---------- */
+
+.documentos {
+    -fx-tab-min-height: 30;
+    -fx-tab-max-height: 30;
+}
+
+.documentos > .tab-header-area > .tab-header-background {
+    -fx-background-color: -c-superficie;
+}
+
+.documentos .tab {
+    -fx-background-color: -c-boton;
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 5 5 0 0;
+}
+
+.documentos .tab:selected {
+    -fx-background-color: -c-fondo-editor;
+}
+
+.documentos .tab .tab-label {
+    -fx-text-fill: -c-texto-suave;
+}
+
+.documentos .tab:selected .tab-label {
+    -fx-text-fill: -c-texto;
+    -fx-font-weight: bold;
+}
+
+.documentos > .tab-header-area > .headers-region > .tab > .tab-container > .tab-close-button {
+    -fx-background-color: -c-texto-suave;
+}
+
+/* ---------- Editor y canaleta de numeros ---------- */
+
+.document-pane {
+    -fx-background-color: -c-fondo-editor;
+}
+
+.editor,
+.editor .content {
+    -fx-background-color: -c-fondo-editor;
+    -fx-text-fill: -c-texto;
+    -fx-highlight-fill: -c-seleccion;
+    -fx-highlight-text-fill: -c-texto;
+}
+
+.editor {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+/* El relleno interno se fija igual en el editor y en la canaleta: si difiere
+   en vertical aunque sea un pixel, los numeros dejan de coincidir con
+   sus lineas al desplazarse. */
+.editor .content {
+    -fx-padding: 4 8 4 8;
+}
+
+.gutter .content {
+    -fx-padding: 4 10 4 6;
+}
+
+.gutter,
+.gutter .content {
+    -fx-background-color: -c-fondo-canaleta;
+    -fx-text-fill: -c-texto-tenue;
+    -fx-highlight-fill: transparent;
+}
+
+.gutter {
+    -fx-background-insets: 0;
+    -fx-border-color: transparent -c-borde transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 0;
+}
+
+/* La canaleta no debe mostrar sus propias barras de desplazamiento:
+   sigue al editor por enlace, no por interaccion del usuario. */
+.gutter .scroll-bar:vertical,
+.gutter .scroll-bar:horizontal {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+.placeholder-pane {
+    -fx-background-color: -c-fondo-editor;
+}
+
+.placeholder {
+    -fx-text-fill: -c-texto-tenue;
+    -fx-font-size: 15px;
+}
+
+/* ---------- Barra de estado ---------- */
+
+.barra-estado {
+    -fx-background-color: -c-superficie;
+    -fx-border-color: -c-borde transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.barra-estado .label {
+    -fx-text-fill: -c-texto-suave;
+}
+
+.estado-dato {
+    -fx-font-size: 12px;
+    -fx-text-fill: -c-texto-suave;
+}
+
+.estado-mensaje {
+    -fx-font-size: 12px;
+}
+
+/* Colores segun el resultado de la ultima operacion. */
+.estado-exito  { -fx-text-fill: -c-exito; }
+.estado-error  { -fx-text-fill: -c-error; }
+.estado-info   { -fx-text-fill: -c-acento; }
+
+.progreso-tarea {
+    -fx-background-color: transparent;
+}
+
+.progreso-tarea > .track {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.progreso-tarea > .bar {
+    -fx-background-color: -c-acento;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+/* ---------- Ventanas secundarias ---------- */
+
+.panel-dialogo {
+    -fx-background-color: -c-fondo;
+}
+
+.cabecera-dialogo {
+    -fx-background-color: -c-superficie;
+}
+
+.titulo-dialogo {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -c-texto;
+}
+
+.subtitulo-dialogo {
+    -fx-font-size: 12px;
+    -fx-text-fill: -c-texto-suave;
+}
+
+.titulo-seccion {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -c-acento;
+}
+
+.etiqueta-campo {
+    -fx-text-fill: -c-texto-suave;
+}
+
+.dato {
+    -fx-font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    -fx-font-weight: bold;
+    -fx-text-fill: -c-texto;
+}
+
+.parrafo {
+    -fx-text-fill: -c-texto;
+    -fx-line-spacing: 3;
+}
+
+.nota {
+    -fx-font-size: 11.5px;
+    -fx-text-fill: -c-texto-tenue;
+    -fx-line-spacing: 2;
+}
+
+.nota-ruta {
+    -fx-font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    -fx-font-size: 11px;
+    -fx-text-fill: -c-texto-tenue;
+}
+
+.panel-resumen,
+.panel-resumen > .viewport {
+    -fx-background-color: -c-fondo;
+}
+
+.rejilla-datos {
+    -fx-padding: 2 0 2 0;
+}
+
+.resultado-busqueda {
+    -fx-font-size: 12px;
+    -fx-text-fill: -c-acento;
+}
+
+.muestra-fuente,
+.muestra-fuente .content {
+    -fx-background-color: -c-fondo-editor;
+    -fx-text-fill: -c-texto;
+}
+
+/* ---------- Controles de entrada ---------- */
+
+.text-field,
+.text-area,
+.combo-box,
+.choice-box,
+.spinner {
+    -fx-background-color: -c-fondo-editor;
+    -fx-text-fill: -c-texto;
+    -fx-border-color: -c-borde;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.text-field:focused,
+.text-area:focused,
+.combo-box:focused,
+.choice-box:focused {
+    -fx-border-color: -c-acento;
+}
+
+.text-field {
+    -fx-padding: 5 8 5 8;
+}
+
+.combo-box .list-cell,
+.choice-box .label {
+    -fx-text-fill: -c-texto;
+}
+
+.check-box {
+    -fx-text-fill: -c-texto;
+}
+
+.check-box .box {
+    -fx-background-color: -c-fondo-editor;
+    -fx-border-color: -c-borde;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -c-acento;
+    -fx-border-color: -c-acento;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -c-acento-texto;
+}
+
+/* ---------- Tabla y grafica ---------- */
+
+.table-view {
+    -fx-background-color: -c-fondo-editor;
+    -fx-border-color: -c-borde;
+    -fx-table-cell-border-color: -c-borde-tenue;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: -c-superficie;
+    -fx-border-color: transparent -c-borde -c-borde transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -c-texto;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: -c-fondo-editor;
+    -fx-text-fill: -c-texto;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -c-fila-alterna;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -c-seleccion;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: -c-texto;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 4 8 4 8;
+}
+
+.chart {
+    -fx-background-color: -c-fondo-editor;
+    -fx-padding: 8;
+}
+
+.chart-plot-background {
+    -fx-background-color: -c-fondo-editor;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: -c-borde-tenue;
+}
+
+.axis {
+    -fx-tick-label-fill: -c-texto-suave;
+}
+
+.axis-label {
+    -fx-text-fill: -c-texto-suave;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: -c-acento;
+}
+
+/* ---------- Separadores, tooltips y dialogos del sistema ---------- */
+
+.separator .line {
+    -fx-border-color: -c-borde;
+    -fx-border-width: 1 0 0 0;
+}
+
+.tool-tip {
+    -fx-background-color: -c-superficie-alta;
+    -fx-text-fill: -c-texto;
+    -fx-border-color: -c-borde;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-size: 12px;
+}
+
+.dialog-pane {
+    -fx-background-color: -c-fondo;
+}
+
+.dialog-pane .label,
+.dialog-pane .content .label,
+.dialog-pane .header-panel .label {
+    -fx-text-fill: -c-texto;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -c-superficie;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.split-pane {
+    -fx-background-color: -c-fondo;
+    -fx-border-color: transparent;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: -c-borde;
+    -fx-padding: 0 1 0 1;
+}

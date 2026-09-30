@@ -1,0 +1,32 @@
+/*
+ * Tema oscuro. Solo define la paleta; la estructura vive en base.css.
+ */
+
+.root {
+    -c-fondo:            #1b1e24;
+    -c-superficie:       #23272f;
+    -c-superficie-alta:  #2d323b;
+    -c-fondo-editor:     #15181d;
+    -c-fondo-canaleta:   #1b1e24;
+
+    -c-texto:            #e3e6ec;
+    -c-texto-suave:      #a8b0bd;
+    -c-texto-tenue:      #6f7887;
+
+    -c-borde:            #343a44;
+    -c-borde-tenue:      #282d35;
+
+    -c-boton:            #2a2f38;
+    -c-boton-hover:      #343a45;
+    -c-boton-activo:     #3d4450;
+
+    -c-acento:           #62a0ea;
+    -c-acento-hover:     #7ab0ef;
+    -c-acento-texto:     #10131a;
+
+    -c-seleccion:        #2f4a6d;
+    -c-fila-alterna:     #1a1d23;
+
+    -c-exito:            #57c98a;
+    -c-error:            #f2837a;
+}
